@@ -1,0 +1,48 @@
+mkdir app 
+npm init -y 
+npm i jsonwebtoken@9.0.0
+package.json 
+  type 
+  scripts 
+    all 
+
+api.js 
+  async handler with hello world 
+  createServer
+  export {app }
+
+api.test.js 
+  describe
+  before
+  after
+  first it 
+    all 
+api.js 
+  VALID 
+  if request
+    loginRoute
+      until user invalid 
+    response.end('ok)
+-> test should pass 
+api.js 
+  jsonwebtoken
+    all 
+api.test.js 
+  second it 
+    all 
+-> test should pass 
+  third it 
+    all 
+api.js 
+  validateHeaders
+    all 
+  response.end()
+
+api.test.js 
+  forth it 
+    all 
+-> test should pass 
+api.test.js 
+  fith it 
+    all 
+> test should pass 

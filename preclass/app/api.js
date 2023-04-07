@@ -37,8 +37,8 @@ async function handler(request, response) {
   }
 
   if (!validateHeaders(request.headers)) {
-    response.writeHead(404)
-    return response.end("invalid token!")
+    response.writeHead(400)
+    return response.end(JSON.stringify({ result: "invalid token!" }))
   }
 
   response.end(JSON.stringify({ result: 'Hey welcome!' }))  

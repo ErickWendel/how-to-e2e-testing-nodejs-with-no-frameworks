@@ -44,9 +44,21 @@ describe('API Workflow', () => {
     _globalToken = response.token
   })
 
-  it('should be allowed to access private data given right token', async () => {
+  it('should not be allowed to access private data without a token', async () => {
     const headers = {
-      'authorization': `${_globalToken}`
+      authorization: ''
+    }
+    const request = await fetch(`${BASE_URL}`, {
+      headers
+    })
+    deepStrictEqual(request.status, 400)
+    const response = await request.json()
+    deepStrictEqual(response, { result: 'invalid token!' })
+  })
+
+  it('should be allowed to access private data given a valid token', async () => {
+    const headers = {
+      authorization: _globalToken
     }
     const request = await fetch(`${BASE_URL}`, {
       headers
