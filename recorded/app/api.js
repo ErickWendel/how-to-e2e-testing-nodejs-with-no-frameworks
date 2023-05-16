@@ -6,7 +6,9 @@ const DEFAULT_USER = {
   user: 'erickwendel',
   password: '123'
 }
+
 const JWT_KEY = 'abc123'
+
 async function loginRoute(request, response) {
   const { user, password } = JSON.parse(await once(request, 'data'))
   if (user !== DEFAULT_USER.user || password !== DEFAULT_USER.password) {
@@ -18,9 +20,10 @@ async function loginRoute(request, response) {
 
   response.end(JSON.stringify({ token }))
 }
+
 function isHeadersValid(headers) {
   try {
-    const auth = headers.authorization.replace(/bearer\s/ig, '')
+    const auth = headers.authorization.replace(/bearer\s/gi, '')
     JWT.verify(auth, JWT_KEY)
 
     return true
@@ -40,7 +43,8 @@ async function handler(request, response) {
   response.end(JSON.stringify({ result: 'Hey welcome!' }))
 }
 
-const app = createServer(handler)
-  .listen(3000, () => console.log('listening at 3000'))
+const app = createServer(handler).listen(3000, () =>
+  console.log('listening at 3000')
+)
 
 export { app }

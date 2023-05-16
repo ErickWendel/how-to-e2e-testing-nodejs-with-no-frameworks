@@ -1,6 +1,7 @@
 import { describe, before, after, it } from 'node:test'
 import { deepStrictEqual, ok, strictEqual } from 'node:assert'
 const BASE_URL = 'http://localhost:3000'
+
 describe('API Workflow', () => {
   let _server = {}
   let _globalToken = ''
@@ -23,7 +24,8 @@ describe('API Workflow', () => {
     const response = await request.json()
     deepStrictEqual(response, { error: 'user invalid!' })
   })
-  it('should login successfuly given user and password', async () => {
+
+  it('should login successfully given user and password', async () => {
     const data = {
       user: 'erickwendel',
       password: '123'
